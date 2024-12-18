@@ -1,0 +1,73 @@
+.sidebar {
+  width: 15%; /* Adjust width as needed */
+  height: 100vh;
+  background-color: #305F72; /* Deep slate blue (use the darker tone for the sidebar) */
+  color: #FDF7EF; /* Off-white text */
+  position: fixed; /* Keeps sidebar fixed on the screen */
+  display: flex; /* Add flexbox for layout */
+  flex-direction: column; /* Stack items vertically */
+  padding: 20px 10px;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-logo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sidebar-logo h2 {
+  color: #FDF7EF; /* Off-white for logo text */
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  display: flex; /* Add flex display */
+  flex-direction: column; /* Stack items vertically */
+  height: 100%; /* Ensure full height for proper alignment */
+}
+
+.sidebar-item {
+  padding: 12px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  color: #FDF7EF;
+}
+
+/* Push the settings button to the bottom */
+.sidebar-item.settings-btn {
+  margin-top: auto;
+}
+
+/* Ensure entire area is clickable */
+.sidebar-item .link {
+  display: block;
+  text-decoration: none;
+  color: inherit; /* Inherit color from sidebar-item */
+  padding: 10px;
+  width: 100%;
+}
+
+.sidebar-item:hover {
+  background-color: #568EA6; /* Muted blue on hover */
+  border-radius: 25px;
+  transform: translateX(5px);
+}
+
+/* Active state styling */
+.sidebar-item .active {
+  background-color: #FDF7EF; /* Light coral for active item */
+  color: #305F72; /* Deep slate blue text for active state */
+  border-radius: 15px;
+}
+
+.icon {
+  font-size: 20px;
+  margin-right: 10px;
+}
