@@ -1,21 +1,14 @@
-/*#F18C8E (light coral)
-#F0B7A4 (light peach)
-#FDF7EF (off-white/cream)
-#4db6ac
-#568EA6 (muted blue)
-#305F72 (deep slate blue)*/
 
+/* Main App Styles */
 .app {
     display: flex;
-    /* Flex container for the sidebar and content */
     height: 100vh;
+    /* Flex container for the sidebar and content */
 }
 
 .content {
     width: 80%;
-    /* Adjust width as needed */
     margin-left: 15%;
-    /* To account for the fixed sidebar width */
     padding: 20px 50px;
     display: flex;
     flex-direction: column;
@@ -53,7 +46,6 @@
 .emoji-container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    /* 5 emojis per row */
     gap: 15px;
     justify-items: center;
 }
@@ -67,9 +59,7 @@
 
 .emoji.selected {
     transform: scale(1.2);
-    /* Slightly enlarge selected emoji */
     box-shadow: 0 0 10px rgba(241, 140, 142, 0.8);
-    /* Add glow effect */
     border-radius: 50%;
 }
 
@@ -92,7 +82,6 @@
     color: #FDF7EF;
     text-align: center;
 }
-
 
 .button {
     z-index: 100;
@@ -126,7 +115,7 @@
     border: 1px solid red;
 }
 
-
+/* Popup Styles */
 .popup {
     position: fixed;
     top: 50%;
@@ -157,4 +146,39 @@
 
 .popup-close:hover {
     color: #F18C8E;
+}
+
+/* Weather Section Styles */
+.weather-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    justify-items: center;
+    margin-top: 20px;
+}
+
+.weather-icon {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.weather-icon.selected {
+    transform: scale(1.2);
+    box-shadow: 0 0 10px rgba(241, 140, 142, 0.8);
+    border-radius: 50%;
+}
+
+/* Optional hover effect */
+.weather-icon:hover {
+    transform: scale(1.1);
+}
+
+.weather-label {
+    margin-top: 2px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #FDF7EF;
+    text-align: center;
 }

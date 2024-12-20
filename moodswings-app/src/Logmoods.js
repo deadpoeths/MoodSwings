@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { FaSun, FaCloud, FaCloudRain, FaSnowflake, FaSmog, FaWind } from "react-icons/fa";
 import { ReactComponent as Happy } from './svgs/happy.svg';
 import { ReactComponent as Sad } from './svgs/sad.svg';
 import { ReactComponent as Angry } from './svgs/angry.svg';
@@ -14,15 +15,15 @@ import { ReactComponent as Disgust } from './svgs/disgust.svg';
 import { ReactComponent as Tired } from './svgs/tired.svg';
 import { ReactComponent as Excited } from './svgs/excited.svg';
 import { ReactComponent as Surprise } from './svgs/surprise.svg';
-
 import Sidebar from "./Sidebar";
 import "./Logmoods.css";
 
 const LogMoods = () => {
   const [entry, setEntry] = useState("");
   const [selectedEmojis, setSelectedEmojis] = useState([]);
+  const [selectedWeather, setSelectedWeather] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
-  const [errors, setErrors] = useState({ entry: "", emojis: "" });
+  const [errors, setErrors] = useState({ entry: "", emojis: "", weather: "" });
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -32,7 +33,7 @@ const LogMoods = () => {
     }
     fetch("/api/moods", {
       headers: {
-        "Authorization": `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
     })
       .then((response) => response.json())
@@ -41,7 +42,7 @@ const LogMoods = () => {
 
   const validateForm = () => {
     let hasError = false;
-    const newErrors = { entry: "", emojis: "" };
+    const newErrors = { entry: "", emojis: "", weather: "" };
 
     if (!entry.trim()) {
       newErrors.entry = "Please enter a journal entry.";
@@ -49,6 +50,10 @@ const LogMoods = () => {
     }
     if (selectedEmojis.length === 0) {
       newErrors.emojis = "Please select at least one mood.";
+      hasError = true;
+    }
+    if (!selectedWeather) {
+      newErrors.weather = "Please select the weather.";
       hasError = true;
     }
 
@@ -73,11 +78,10 @@ const LogMoods = () => {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${token}`,
       },
-      body: JSON.stringify({ entry, moods: selectedEmojis, timestamp }),
+      body: JSON.stringify({ entry, moods: selectedEmojis, weather: selectedWeather, timestamp }),
     })
       .then((response) => {
         if (!response.ok) {
-          // Handle server errors, such as 404 or 500
           console.error("Server error:", response.status);
           throw new Error(`Request failed with status: ${response.status}`);
         }
@@ -89,7 +93,8 @@ const LogMoods = () => {
         } else {
           setEntry("");
           setSelectedEmojis([]);
-          setErrors({ entry: "", emojis: "" });
+          setSelectedWeather(null);
+          setErrors({ entry: "", emojis: "", weather: "" });
           setShowPopup(true);
         }
       })
@@ -100,15 +105,26 @@ const LogMoods = () => {
 
   const handleEmojiClick = (emojiId) => {
     setSelectedEmojis((prev) =>
-      prev.includes(emojiId)
-        ? prev.filter((id) => id !== emojiId)
-        : [...prev, emojiId]
+      prev.includes(emojiId) ? prev.filter((id) => id !== emojiId) : [...prev, emojiId]
     );
+  };
+
+  const handleWeatherClick = (weatherType) => {
+    setSelectedWeather(weatherType);
   };
 
   const closePopup = () => {
     setShowPopup(false);
   };
+
+  const weatherOptions = [
+    { id: 1, Icon: FaSun, label: "Sunny" },
+    { id: 2, Icon: FaCloud, label: "Cloudy" },
+    { id: 3, Icon: FaCloudRain, label: "Rainy" },
+    { id: 4, Icon: FaSnowflake, label: "Snowy" },
+    { id: 5, Icon: FaSmog, label: "Foggy" },
+    { id: 6, Icon: FaWind, label: "Windy" },
+  ];
 
   const emojiList = [
     { id: 1, Component: Happy, label: "Happy" },
@@ -133,6 +149,7 @@ const LogMoods = () => {
       <Sidebar />
       <div className="content">
         <div className="card">
+          {/* Today's Mood Section */}
           <div className="section">
             <h2 className="card-title">Today's Mood</h2>
             <div className="emoji-container">
@@ -149,6 +166,23 @@ const LogMoods = () => {
             {errors.emojis && <p className="error-message">{errors.emojis}</p>}
           </div>
 
+          {/* Weather Section */}
+          <div className="section">
+            <h2 className="card-title">Weather</h2>
+            <div className="weather-container">
+              {weatherOptions.map(({ id, Icon, label }) => (
+                <div key={id} className="weather-wrapper" onClick={() => handleWeatherClick(id)}>
+                  <Icon
+                    className={`weather-icon ${selectedWeather === id ? "selected" : ""}`}
+                  />
+                  <p className="weather-label">{label}</p>
+                </div>
+              ))}
+            </div>
+            {errors.weather && <p className="error-message">{errors.weather}</p>}
+          </div>
+
+          {/* Personal Journal Section */}
           <div className="section">
             <h2 className="card-title">Personal Journal</h2>
             <textarea
@@ -169,7 +203,7 @@ const LogMoods = () => {
             <span className="popup-close" onClick={closePopup}>
               &times;
             </span>
-            <p>Successfully logged in today's mood!</p>
+            <p>Successfully logged in today's mood and weather!</p>
           </div>
         )}
       </div>
