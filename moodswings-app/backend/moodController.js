@@ -5,6 +5,10 @@ async function addMoodLog(req, res) {
   const { entry, moods, weather } = req.body;
   const userId = req.userId; // Decoded from token middleware
 
+  if (!Array.isArray(moods) || moods.length === 0 || typeof weather !== 'number') {
+    return res.status(400).json({ message: 'Invalid moods or weather data.' });
+  }
+
   try {
     const newMood = new Mood({ userId, entry, moods, weather });
     await newMood.save();
@@ -14,6 +18,7 @@ async function addMoodLog(req, res) {
     res.status(500).json({ message: 'Failed to add mood log.', error });
   }
 }
+
 
 // Get all mood logs for the logged-in user
 async function getMoodLogs(req, res) {

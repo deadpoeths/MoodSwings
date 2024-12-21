@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const MoodSchema = new mongoose.Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }, // Reference to the User model
   entry: { type: String, required: true }, // Journal entry
-  moods: { type: [String], required: true }, // List of selected moods (emoji IDs or names)
-  weather: { type: [String], required: true },
+  moods: { type: [Number], required: true }, // Array of emoji IDs
+  weather: { type: Number, required: true }, // Weather ID
   timestamp: { type: Date, default: Date.now }, // Date of the mood log
 });
 

@@ -78,7 +78,13 @@ const LogMoods = () => {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${token}`,
       },
-      body: JSON.stringify({ entry, moods: selectedEmojis, weather: selectedWeather, timestamp }),
+      body: JSON.stringify({ 
+        entry, 
+        moods: selectedEmojis, // Array of emoji IDs
+        weather: selectedWeather, // Single weather ID 
+        timestamp 
+      }),
+      
     })
       .then((response) => {
         if (!response.ok) {
