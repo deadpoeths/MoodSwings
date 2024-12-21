@@ -177,12 +177,23 @@ const LogMoods = () => {
             <h2 className="card-title">Weather</h2>
             <div className="weather-container">
               {weatherOptions.map(({ id, Icon, label }) => (
-                <div key={id} className="weather-wrapper" onClick={() => handleWeatherClick(id)}>
-                  <Icon
-                    className={`weather-icon ${selectedWeather === id ? "selected" : ""}`}
-                  />
-                  <p className="weather-label">{label}</p>
-                </div>
+                <div 
+                key={id} 
+                className={`weather-wrapper ${selectedWeather === id ? "selected" : ""}`} 
+                onClick={() => handleWeatherClick(id)}
+              >
+                <Icon
+                  className={`weather-icon ${
+                    label.toLowerCase().includes("sunny") ? "weather-sunny" :
+                    label.toLowerCase().includes("cloudy") ? "weather-cloudy" :
+                    label.toLowerCase().includes("rainy") ? "weather-rainy" :
+                    label.toLowerCase().includes("snowy") ? "weather-snowy" :
+                    label.toLowerCase().includes("foggy") ? "weather-foggy" :
+                    "weather-windy"
+                  } ${selectedWeather === id ? "selected" : ""}`}
+                />
+                <p className="weather-label">{label}</p>
+              </div>              
               ))}
             </div>
             {errors.weather && <p className="error-message">{errors.weather}</p>}

@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { FaHome, /*FaChartBar,*/ FaPencilAlt, FaCalendarAlt, FaChartLine, FaCog } from "react-icons/fa"; // Import icons
+import { FaHome, FaPencilAlt, FaCalendarAlt, FaChartLine, FaCog } from "react-icons/fa"; // Import icons
 import "./Sidebar.css";
 
 const Sidebar = () => {
@@ -15,11 +15,6 @@ const Sidebar = () => {
             <FaHome className="icon" /> Home
           </NavLink>
         </li>
-        {/*<li className="sidebar-item">
-          <NavLink to="/dashboard" activeClassName="active" className="link">
-            <FaChartBar className="icon" /> Dashboard
-          </NavLink>
-        </li>*/}
         <li className="sidebar-item">
           <NavLink to="/log-moods" activeClassName="active" className="link">
             <FaPencilAlt className="icon" /> Log Moods

@@ -1,4 +1,3 @@
-
 /* Main App Styles */
 .app {
     display: flex;
@@ -181,4 +180,28 @@
     font-weight: 500;
     color: #FDF7EF;
     text-align: center;
+}
+
+.weather-sunny {
+    color: #FFD700;
+}
+
+.weather-cloudy {
+    color: #B0C4DE; 
+}
+
+.weather-rainy {
+    color: #4682B4;
+}
+
+.weather-snowy {
+    color: #ADD8E6; 
+}
+
+.weather-foggy {
+    color: #A9A9A9; 
+}
+
+.weather-windy {
+    color: #87CEEB; 
 }
