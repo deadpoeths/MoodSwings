@@ -2,11 +2,11 @@ const Mood = require('./moodModel');
 
 // Add a new mood log
 async function addMoodLog(req, res) {
-  const { entry, moods } = req.body;
+  const { entry, moods, weather } = req.body;
   const userId = req.userId; // Decoded from token middleware
 
   try {
-    const newMood = new Mood({ userId, entry, moods });
+    const newMood = new Mood({ userId, entry, moods, weather });
     await newMood.save();
     res.status(201).json({ message: 'Mood log added successfully!', mood: newMood });
   } catch (error) {
