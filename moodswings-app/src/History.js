@@ -6,13 +6,15 @@ import './History.css';
 function History() {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [loggedDates, setLoggedDates] = useState([]); // Replace this with fetched data
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDetails, setSelectedDetails] = useState(null);
 
   useEffect(() => {
     fetch('http://localhost:5000/api/moods')
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data)) {
-          const parsedDates = data.map((item) => new Date(item));
+          const parsedDates = data.map((item) => ({ ...item, date: new Date(item.date) }));
           setLoggedDates(parsedDates);
         } else {
           console.error('Unexpected data format:', data);
@@ -22,8 +24,6 @@ function History() {
       .catch((err) => console.error('Error fetching data:', err));
   }, []);
 
-
-
   const startDate = startOfMonth(currentMonth);
   const endDate = endOfMonth(currentMonth);
   const days = eachDayOfInterval({ start: startDate, end: endDate });
@@ -32,6 +32,12 @@ function History() {
   const nextMonth = () => setCurrentMonth(addMonths(currentMonth, 1));
 
   const dayNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+
+  const handleDateClick = (day) => {
+    const details = loggedDates.find((loggedDay) => isSameDay(loggedDay.date, day));
+    setSelectedDate(day);
+    setSelectedDetails(details || { mood: 'No data', journal: 'No data', weather: 'No data' });
+  };
 
   return (
     <div className="app">
@@ -61,7 +67,7 @@ function History() {
             ))}
 
             {days.map((day, index) => {
-              const isLogged = Array.isArray(loggedDates) && loggedDates.some((loggedDay) => isSameDay(loggedDay, day));
+              const isLogged = Array.isArray(loggedDates) && loggedDates.some((loggedDay) => isSameDay(loggedDay.date, day));
               const isPast = isBefore(day, new Date()) && !isLogged;
               const isFuture = isBefore(new Date(), day);
 
@@ -69,6 +75,7 @@ function History() {
                 <div
                   key={index}
                   className={`date ${isLogged ? 'logged' : ''} ${isPast ? 'missed' : ''} ${isFuture ? 'future' : ''}`}
+                  onClick={() => handleDateClick(day)}
                 >
                   {format(day, 'd')}
                 </div>
@@ -76,6 +83,17 @@ function History() {
             })}
           </div>
         </div>
+
+        {/* Selected Date Details */}
+        {selectedDate && (
+          <div className="selected-details">
+            <button className="close-button" onClick={() => setSelectedDate(null)}>×</button>
+            <h2>Details for {format(selectedDate, 'MMMM d, yyyy')}</h2>
+            <p><strong>Mood:</strong> {selectedDetails?.mood}</p>
+            <p><strong>Weather:</strong> {selectedDetails?.weather}</p>
+            <p><strong>Journal Entry:</strong> {selectedDetails?.journal}</p>
+          </div>
+        )}
       </div>
     </div>
   );
