@@ -134,62 +134,52 @@
 .empty-date {
     visibility: hidden;
 }
-/* Center the detail container */
-.selected-details {
+
+/* Popup Styles */
+.history-popup {
     position: absolute;
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Adjust for exact centering */
-    background: #F0B7A4; /* Light peach background */
-    color: #305F72; /* Deep slate blue text color */
+    top: 50%; 
+    left: 57%; 
+    transform: translate(-50%, -50%); 
+    background: #F0B7A4; 
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    width: 80%; /* Smaller size */
+    width: 80%;
     max-width: 400px;
     z-index: 10;
-  }
-  
-  /* Close Button Styling */
-  .close-button {
-    position: absolute;
-    top: 10px; /* Distance from the top edge */
-    right: 10px; /* Distance from the right edge */
-    background: transparent; /* Transparent background */
-    color: #305F72; /* Deep slate blue */
-    border: none;
-    font-size: 1.5rem; /* Size of the '×' symbol */
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  /* Style for the heading inside the details box */
-  .selected-details h2 {
+}
+
+.history-popup h2 {
     margin-bottom: 1rem;
     font-size: 1.5rem;
-    color: #305F72;
+    color: #FDF7EF;
     text-align: center;
-  }
-  
-  /* Style for paragraphs inside the details box */
-  .selected-details p {
+}
+
+.history-popup p {
     margin: 0.5rem 0;
     font-size: 1rem;
-    color: #FDF7EF; /* Off-white text */
-    background: #568EA6; /* Muted blue background */
+    color: #FDF7EF; 
+    background: #568EA6; 
     padding: 0.5rem 1rem;
     border-radius: 4px;
     line-height: 1.5;
-  }
-  
-  /* No hover effect on the close button */
-  .close-button:hover {
-    color: #F18C8E; /* Optional: highlight color when hovered */
-  }
-  
-  
-  
-  
-  
-  
-  
+}
+
+.history-popup-close {
+    position: absolute;
+    bottom: 220px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #FDF7EF;
+    width: 2px;
+}
+
+.history-popup-close:hover {
+    color: #F18C8E;
+}
