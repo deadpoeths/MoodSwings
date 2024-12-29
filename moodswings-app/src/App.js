@@ -7,7 +7,6 @@ import SignUp from './SignUp';
 import Home from './Home';
 import LogMoods from "./Logmoods";
 import History from "./History";
-import Settings from "./Settings";
 
 function App() {
   return (
@@ -20,7 +19,6 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/log-moods" element={<LogMoods />} />
           <Route path="/history" element={<History />} />
-          <Route path="/settings" element={<Settings />} />
         </Routes>
       </div>
     </Router>
