@@ -2,30 +2,206 @@
 #F0B7A4 (light peach)
 #FDF7EF (off-white/cream)
 #568EA6 (muted blue)
-#305F72 (deep slate blue)*/  
+#305F72 (deep slate blue) */
+
 .app {
-    display: flex; /* Flex container for the sidebar and content */
-    height: 100vh;
+  display: flex;
+  height: 100vh;
 }
-.content {
-    width: 80%; /* Adjust width as needed */
-    margin-left: 15%; /* To account for the fixed sidebar width */
-    padding: 20px 50px;
-    display: flex;
-    flex-direction: column;
-    background-color: #FDF7EF;
-    overflow-y: auto; /* Scroll if content exceeds view height */
-  }
-  
-  .card-container {
-    display: flex;
-    flex-wrap: wrap; /* Allows multiple rows of cards if needed */
-    gap: 20px; /* Space between cards */
-    justify-content: space-between; /* Align cards evenly */
-  }
-  
-  h1 {
-    color: #FDF7EF; /* Text color */
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
+
+.home-content {
+  width: 80%;
+  margin-left: 15%;
+  padding: 20px 50px;
+  display: flex;
+  flex-direction: column;
+  background-color: #FDF7EF;
+  overflow-y: auto;
+  z-index: -1;
+}
+
+.home-container {
+  width: 95%;
+  height: 100%;
+  max-height: 1000px;
+  margin: 0 auto;
+  top: 3px;
+  left: 15px;
+  bottom: 5px;
+  background: #305F72;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  color: #FDF7EF;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.welcome-message {
+  top: 30px;
+  margin-bottom: 100px;
+}
+
+.icon-ring-home {
+  position: absolute;
+  top: 55px;
+  right: 65px;
+  width: 150px;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  transform: rotate(0deg);
+}
+
+.icon-wrapper-home {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-origin: center;
+}
+
+.icon-container-home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-text-home {
+  position: absolute;
+  font-size: 16px;
+  color: #FDF7EF;
+  text-align: center;
+  transform: none;
+  /* Ensure text doesn't rotate */
+  z-index: 10;
+}
+
+.icon-wrapper-home svg {
+  width: 40px;
+  height: 40px;
+}
+
+.icon-wrapper-home:nth-child(1) {
+  transform: rotate(0deg) translate(100px);
+}
+
+.icon-wrapper-home:nth-child(2) {
+  transform: rotate(24deg) translate(100px);
+}
+
+.icon-wrapper-home:nth-child(3) {
+  transform: rotate(48deg) translate(100px);
+}
+
+.icon-wrapper-home:nth-child(4) {
+  transform: rotate(72deg) translate(100px);
+}
+
+.icon-wrapper-home:nth-child(5) {
+  transform: rotate(96deg) translate(100px);
+}
+
+.icon-wrapper-home:nth-child(6) {
+  transform: rotate(120deg) translate(100px);
+}
+
+.icon-wrapper-home:nth-child(7) {
+  transform: rotate(144deg) translate(100px);
+}
+
+.icon-wrapper-home:nth-child(8) {
+  transform: rotate(168deg) translate(100px);
+}
+
+.icon-wrapper-home:nth-child(9) {
+  transform: rotate(192deg) translate(100px);
+}
+
+.icon-wrapper-home:nth-child(10) {
+  transform: rotate(216deg) translate(100px);
+}
+
+.icon-wrapper-home:nth-child(11) {
+  transform: rotate(240deg) translate(100px);
+}
+
+.icon-wrapper-home:nth-child(12) {
+  transform: rotate(264deg) translate(100px);
+}
+
+.icon-wrapper-home:nth-child(13) {
+  transform: rotate(288deg) translate(100px);
+}
+
+.icon-wrapper-home:nth-child(14) {
+  transform: rotate(312deg) translate(100px);
+}
+
+.icon-wrapper-home:nth-child(15) {
+  transform: rotate(336deg) translate(100px);
+}
+
+/* Horizontal bar chart styles */
+.bar-chart {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 300px;
+  margin-top: 0px;
+  border-radius: 8px;
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 85px;
+}
+
+.bar-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 50%;
+  margin-bottom: 10px;
+}
+
+.bar {
+  height: 30px;
+  /* Bar height */
+  background-color: #568EA6;
+  /* Default color */
+  border-radius: 4px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: white;
+  font-size: 12px;
+  position: relative;
+  transition: width 0.3s ease;
+  margin-right: 10px;
+}
+
+.bar-count {
+  position: absolute;
+  left: 10px;
+  font-size: 14px;
+  color: #305F72;
+  font-weight: bold;
+}
+
+.bar-icon {
+  margin-left: 5px;
+  /* Spacing between icon and bar */
+}
+
+.bar-label {
+  margin-left: 10px;
+  font-size: 12px;
+  color: #305F72;
+  text-align: center;
+}

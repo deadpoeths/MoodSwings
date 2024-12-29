@@ -1,6 +1,5 @@
 const Mood = require('./moodModel');
 
-// Add a new mood log
 async function addMoodLog(req, res) {
   const { entry, moods, weather } = req.body;
   const userId = req.userId; // Decoded from token middleware
@@ -18,7 +17,6 @@ async function addMoodLog(req, res) {
     res.status(500).json({ message: 'Failed to add mood log.', error });
   }
 }
-
 
 // Get all mood logs for the logged-in user
 async function getMoodLogs(req, res) {
