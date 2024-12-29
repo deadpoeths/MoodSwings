@@ -1,6 +1,5 @@
 import React from 'react';
 import Sidebar from "./Sidebar";
-import Card from "./Card";
 import './Settings.css';
 
 function Settings() {
@@ -8,13 +7,8 @@ function Settings() {
     <div className="app">
       <Sidebar />
       <div className="content">
-        <h1>Dashboard</h1>
-        <div className="card-container">
-          <Card
-            title="Settings"
-            content="Customize your MoodSwings experience. Manage your profile, preferences, and app settings here."
-          />
-        </div>
+        <h1>Settings</h1>
+    
       </div>
     </div>
   );

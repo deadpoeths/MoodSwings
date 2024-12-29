@@ -1,6 +1,6 @@
 /* Shared styles for login, signup, and welcome pages */
 body.login, body.signup, body.welcome {
-  background-image: url('../public/background.jpg');
+  background-color: #305F72;
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -117,7 +117,7 @@ button {
 }
 
 button:hover {
-  background-color: #F0B7A4; /* Change to muted blue */
+  background-color: #F0B7A4; 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
   transform: scale(1.05); /* Slightly enlarge */
 }
@@ -135,11 +135,13 @@ button:hover {
 
 /* Link Styles */
 a {
-  text-decoration: none;
+  text-decoration: underline;
+  color: #F18C8E;
 }
 
 a:hover {
   text-decoration: underline;
+  color: #F0B7A4;
 }
 
 /* Tablet screens (up to 1024px) */
@@ -193,4 +195,108 @@ a:hover {
     font-size: 12px; /* Small buttons for ultra-small screens */
     padding: 6px;    /* Compact padding */
   }
+}
+
+
+
+.icon-ring {
+  position: relative;
+  width: 180px;  /* Increased size of the ring container */
+  height: 180px; /* Increased size of the ring container */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  transform: rotate(0deg); /* Optional: reset rotation of the whole container */
+}
+
+.icon-wrapper {
+  position: absolute;
+  width: 250px;  /* Fixed size of the icon wrapper */
+  height: 250px; /* Fixed size of the icon wrapper */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-origin: center;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-text {
+  position: absolute;
+  font-size: 16px;
+  color: #FDF7EF; 
+  text-align: center;
+  transform: none; /* Ensure text doesn't rotate */
+  z-index: 10; /* Ensure the text stays above the icons */
+}
+
+.icon-wrapper svg {
+  width: 40px;  /* Size of the SVG icons */
+  height: 40px; /* Size of the SVG icons */
+}
+
+/* Increase the distance from the center of the ring */
+.icon-wrapper:nth-child(1) {
+  transform: rotate(0deg) translate(120px); /* Increased translate value */
+}
+
+.icon-wrapper:nth-child(2) {
+  transform: rotate(24deg) translate(120px); /* Increased translate value */
+}
+
+.icon-wrapper:nth-child(3) {
+  transform: rotate(48deg) translate(120px); /* Increased translate value */
+}
+
+.icon-wrapper:nth-child(4) {
+  transform: rotate(72deg) translate(120px); /* Increased translate value */
+}
+
+.icon-wrapper:nth-child(5) {
+  transform: rotate(96deg) translate(120px); /* Increased translate value */
+}
+
+.icon-wrapper:nth-child(6) {
+  transform: rotate(120deg) translate(120px); /* Increased translate value */
+}
+
+.icon-wrapper:nth-child(7) {
+  transform: rotate(144deg) translate(120px); /* Increased translate value */
+}
+
+.icon-wrapper:nth-child(8) {
+  transform: rotate(168deg) translate(120px); /* Increased translate value */
+}
+
+.icon-wrapper:nth-child(9) {
+  transform: rotate(192deg) translate(120px); /* Increased translate value */
+}
+
+.icon-wrapper:nth-child(10) {
+  transform: rotate(216deg) translate(120px); /* Increased translate value */
+}
+
+.icon-wrapper:nth-child(11) {
+  transform: rotate(240deg) translate(120px); /* Increased translate value */
+}
+
+.icon-wrapper:nth-child(12) {
+  transform: rotate(264deg) translate(120px); /* Increased translate value */
+}
+
+.icon-wrapper:nth-child(13) {
+  transform: rotate(288deg) translate(120px); /* Increased translate value */
+}
+
+.icon-wrapper:nth-child(14) {
+  transform: rotate(312deg) translate(120px); /* Increased translate value */
+}
+
+.icon-wrapper:nth-child(15) {
+  transform: rotate(336deg) translate(120px); /* Increased translate value */
 }

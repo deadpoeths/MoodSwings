@@ -8,6 +8,6 @@ const router = express.Router();
 router.post('/', authMiddleware, addMoodLog);
 
 // Route to get all mood logs for the logged-in user
-router.get('/', authMiddleware, getMoodLogs);
+router.get('/', authMiddleware, getMoodLogs); 
 
 module.exports = router;

@@ -2,10 +2,29 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const User = require('./userModel');
 
-// Signup User Function (Updated with detailed logging)
+// Signup User Function 
 async function signupUser(req, res) {
   const { username, email, password } = req.body;
+
   try {
+    // Validate email format using regex
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({ message: 'Invalid email format.' });
+    }
+
+    // Validate username format using regex (alphanumeric, 3-20 characters)
+    const usernameRegex = /^[a-zA-Z0-9]{3,20}$/;
+    if (!usernameRegex.test(username)) {
+      return res.status(400).json({ message: 'Username must be alphanumeric and between 3 to 20 characters.' });
+    }
+
+    // Stronger password validation regex
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+={}\[\]:;"'<>,.?/\\|`~])[A-Za-z\d!@#$%^&*()_+={}\[\]:;"'<>,.?/\\|`~]{7,}$/;
+    if (!passwordRegex.test(password)) {
+      return res.status(400).json({ message: 'Password must be at least 7 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.' });
+    }
+
     // Check if user already exists
     const existingUser = await User.findOne({ $or: [{ email }, { username }] });
     if (existingUser) {
@@ -15,11 +34,6 @@ async function signupUser(req, res) {
     // Trim and hash the password
     const trimmedPassword = password.trim();
     const hashedPassword = await bcrypt.hash(trimmedPassword, 10);
-
-    /* Debug logs for troubleshooting
-    console.log('Signup - Plain Password:', password); Debug log
-    console.log('Signup - Trimmed Password:', trimmedPassword); Debug log
-    console.log('Signup - Hashed Password:', hashedPassword);  Debug log*/
 
     // Create new user with hashed password
     const newUser = new User({
@@ -38,14 +52,21 @@ async function signupUser(req, res) {
   }
 }
 
-// Login User Function (Updated)
+// Login User Function 
 async function loginUser(req, res) {
   const { username, password } = req.body;
+
   try {
     // Find user by username
     const user = await User.findOne({ username });
     if (!user) {
       return res.status(400).json({ message: 'Invalid username.' });
+    }
+
+    // Stronger password validation regex (same as signup)
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+={}\[\]:;"'<>,.?/\\|`~])[A-Za-z\d!@#$%^&*()_+={}\[\]:;"'<>,.?/\\|`~]{10,}$/;
+    if (!passwordRegex.test(password)) {
+      return res.status(400).json({ message: 'Invalid password format.' });
     }
 
     // Debug log to print stored hashed password directly from database
@@ -56,11 +77,6 @@ async function loginUser(req, res) {
 
     // Compare the trimmed password with the stored hashed password
     const isMatch = await bcrypt.compare(trimmedPassword, user.password);
-
-    /* Debug logs for troubleshooting
-    console.log('Login - Entered Password:', trimmedPassword); 
-    console.log('Login - Stored Hashed Password:', user.password); 
-    console.log('Login - Password Match Result:', isMatch);*/
 
     if (!isMatch) {
       return res.status(400).json({ message: 'Invalid password.' });
