@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+app.use(cors({ origin: "https://moodswings.vercel.app/" }));
 require("dotenv").config();
 const connectToDatabase = require("./mongoClient");
 const authRoutes = require("./Routes/authRoutes");
