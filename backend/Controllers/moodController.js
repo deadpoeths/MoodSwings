@@ -1,4 +1,4 @@
-const Mood = require('./moodModel');
+const Mood = require('../Models/moodModel');
 
 async function addMoodLog(req, res) {
   const { entry, moods, weather } = req.body;

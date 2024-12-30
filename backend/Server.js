@@ -2,8 +2,8 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 const connectToDatabase = require("./mongoClient");
-const authRoutes = require("./authRoutes");
-const moodRoutes = require("./moodRoutes");
+const authRoutes = require("./Routes/authRoutes");
+const moodRoutes = require("./Routes/moodRoutes");
 const PORT = process.env.PORT || 3000 
 
 const app = express();

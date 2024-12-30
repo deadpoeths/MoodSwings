@@ -1,6 +1,6 @@
 const express = require('express');
-const { addMoodLog, getMoodLogs } = require('./moodController');
-const authMiddleware = require('./authMiddleware'); // Middleware to verify JWT token
+const { addMoodLog, getMoodLogs } = require('../Controllers/moodController');
+const authMiddleware = require('../authMiddleware'); // Middleware to verify JWT token
 
 const router = express.Router();
 
