@@ -1,18 +1,14 @@
 {
   "version": 2,
   "functions": {
-    "api/**/*.js": {
+    "backend/Routes/*.js": {
       "runtime": "vercel/node@18.0.0"
     }
   },
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "/backend/api/$1"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/moodswings-app/$1"
+      "destination": "/backend/Routes/$1"
     }
   ]
 }
