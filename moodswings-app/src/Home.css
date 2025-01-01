@@ -209,7 +209,7 @@
 /* Media Queries */
 @media (max-width: 768px) {
   .home-content {
-    width: 90%;
+    width: 50%;
     margin-left: 5%;
     padding: 15px;
   }

@@ -117,6 +117,27 @@
   background-color: #F0B7A4; /* Muted blue on hover */
 }
 
+/* Mobile view (up to 480px) */
+@media screen and (max-width: 480px) {
+  .sidebar {
+    width: 100%; /* Full-width sidebar */
+    height: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px 0;
+  }
+  .sidebar-menu {
+    flex-direction: row; /* Horizontal menu */
+    justify-content: space-around;
+  }
+  .sidebar-item {
+    font-size: 12px; /* Smaller text for compact look */
+    margin-bottom: 0;
+  }
+  .sidebar-item .icon {
+    margin-right: 0; /* Align icons properly */
+  }
+}
 /*#F18C8E (light coral)
 #F0B7A4 (light peach)
 #FDF7EF (off-white/cream)
