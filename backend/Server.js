@@ -7,11 +7,22 @@ const moodRoutes = require("./Routes/moodRoutes");
 
 const app = express();
 
+const allowedOrigins = [
+  "http://localhost:3000", // Development URL
+  "https://moodswings.vercel.app", // Production URL
+];
+
 const corsOptions = {
-    origin: "https://moodswings.vercel.app",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  };
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true); // Allow the request
+    } else {
+      callback(new Error("Not allowed by CORS")); // Block the request
+    }
+  },
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
 app.use(cors(corsOptions));
 app.use(express.json());
 
