@@ -73,7 +73,7 @@ const LogMoods = () => {
 
     const timestamp = new Date();
 
-    fetch("http://localhost:5000/api/moods", {
+    fetch("https://moodswings-backend.vercel.app/api/moods", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
