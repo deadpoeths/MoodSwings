@@ -6,7 +6,13 @@ const authRoutes = require("./Routes/authRoutes");
 const moodRoutes = require("./Routes/moodRoutes");
 
 const app = express();
-app.use(cors());
+
+const corsOptions = {
+    origin: "https://moodswings.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  };
+app.use(cors(corsOptions));
 app.use(express.json());
 
 connectToDatabase();
