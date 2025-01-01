@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-const BASE_URL = process.env.REACT_APP_BACKEND_URL;
 import { FaSun, FaCloud, FaCloudRain, FaSnowflake, FaSmog, FaWind } from "react-icons/fa";
 import { ReactComponent as Happy } from './svgs/happy.svg';
 import { ReactComponent as Sad } from './svgs/sad.svg';
@@ -33,7 +32,7 @@ const LogMoods = () => {
       console.error("No token found.");
       return;
     }
-    fetch(`${BASE_URL}/api/moods`, {
+    fetch("/api/moods", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -74,7 +73,7 @@ const LogMoods = () => {
 
     const timestamp = new Date();
 
-    fetch('${BASE_URL}/api/moods', {
+    fetch("http://localhost:5000/api/moods", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

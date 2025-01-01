@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-const BASE_URL = process.env.REACT_APP_BACKEND_URL;
 import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Happy } from './svgs/happy.svg';
@@ -44,7 +43,7 @@ function SignUp() {
     const userData = { username, email, password };
 
     try {
-      const response = await fetch(`${BASE_URL}/api/auth/signup`, {
+      const response = await fetch('http://localhost:5000/api/auth/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-const BASE_URL = process.env.REACT_APP_BACKEND_URL;
 import { format, startOfMonth, endOfMonth, eachDayOfInterval, getDay, addMonths, subMonths, isSameDay, isBefore } from 'date-fns';
 import Sidebar from './Sidebar';
 import './History.css';
@@ -43,7 +42,7 @@ function History() {
   useEffect(() => {
     const token = localStorage.getItem('token');  // Retrieve the token from localStorage
   
-    fetch(`${BASE_URL}/api/moods`, {
+    fetch('http://localhost:5000/api/moods', {
       headers: {
         'Authorization': `Bearer ${token}`  // Add the token to the Authorization header
       }

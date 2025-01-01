@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-const BASE_URL = process.env.REACT_APP_BACKEND_URL;
 import { ReactComponent as Happy } from './svgs/happy.svg';
 import { ReactComponent as Sad } from './svgs/sad.svg';
 import { ReactComponent as Angry } from './svgs/angry.svg';
@@ -75,7 +74,7 @@ const Home = () => {
     const token = localStorage.getItem('token'); // Retrieve the token from localStorage
 
     // Fetch mood data for the home page
-    fetch(`${BASE_URL}/api/moods`, {
+    fetch('http://localhost:5000/api/moods', {
       headers: {
         'Authorization': `Bearer ${token}`,
       },
