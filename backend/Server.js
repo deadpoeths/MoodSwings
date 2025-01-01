@@ -11,6 +11,11 @@ app.use(express.json());
 
 connectToDatabase();
 
+
+app.get('/',(req, res) => {
+    res.json({message: "Test API"})
+})
+
 app.use("/api/auth", authRoutes);
 app.use("/api/moods", moodRoutes); // Add mood logging routes
 
