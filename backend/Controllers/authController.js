@@ -2,6 +2,9 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const User = require('../Models/userModel');
 
+// Unified password validation regex (same for both signup and login)
+const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+={}\[\]:;"'<>,.?/\\|`~])[A-Za-z\d!@#$%^&*()_+={}\[\]:;"'<>,.?/\\|`~]{7,}$/;
+
 // Signup User Function 
 async function signupUser(req, res) {
   const { username, email, password } = req.body;
@@ -19,8 +22,7 @@ async function signupUser(req, res) {
       return res.status(400).json({ message: 'Username must be alphanumeric and between 3 to 20 characters.' });
     }
 
-    // Stronger password validation regex
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+={}\[\]:;"'<>,.?/\\|`~])[A-Za-z\d!@#$%^&*()_+={}\[\]:;"'<>,.?/\\|`~]{7,}$/;
+    // Validate password format using the same regex for both signup and login
     if (!passwordRegex.test(password)) {
       return res.status(400).json({ message: 'Password must be at least 7 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.' });
     }
@@ -63,8 +65,7 @@ async function loginUser(req, res) {
       return res.status(400).json({ message: 'Invalid username.' });
     }
 
-    // Stronger password validation regex (same as signup)
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+={}\[\]:;"'<>,.?/\\|`~])[A-Za-z\d!@#$%^&*()_+={}\[\]:;"'<>,.?/\\|`~]{10,}$/;
+    // Use the same password validation regex for login
     if (!passwordRegex.test(password)) {
       return res.status(400).json({ message: 'Invalid password format.' });
     }
