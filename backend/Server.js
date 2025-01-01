@@ -4,7 +4,6 @@ require("dotenv").config();
 const connectToDatabase = require("./mongoClient");
 const authRoutes = require("./Routes/authRoutes");
 const moodRoutes = require("./Routes/moodRoutes");
-const PORT = process.env.PORT || 3000 
 
 const app = express();
 app.use(cors({ origin: "http://localhost:3000" }));
