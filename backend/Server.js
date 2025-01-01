@@ -6,7 +6,7 @@ const authRoutes = require("./Routes/authRoutes");
 const moodRoutes = require("./Routes/moodRoutes");
 
 const app = express();
-app.use(cors({ origin: "http://localhost:3000" }));
+app.use(cors());
 app.use(express.json());
 
 connectToDatabase();
