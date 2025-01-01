@@ -8,7 +8,7 @@ const moodRoutes = require("./Routes/moodRoutes");
 const app = express();
 
 // Use the deployed frontend URL for CORS
-app.use(cors({ origin: "https://moodswings.vercel.app/" }));
+app.use(cors({ origin: "https://moodswings.vercel.app" }));
 app.use(express.json());
 
 // Connect to the database
