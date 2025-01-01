@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+const BASE_URL = process.env.REACT_APP_BACKEND_URL;
 import { FaUser, FaLock } from 'react-icons/fa';
 import { ReactComponent as Happy } from './svgs/happy.svg';
 import { ReactComponent as Sad } from './svgs/sad.svg';
@@ -37,7 +38,7 @@ function Login() {
     const loginData = { username, password };
 
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {
+      const response = await fetch(`${BASE_URL}/api/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
