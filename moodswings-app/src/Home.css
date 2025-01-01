@@ -205,3 +205,66 @@
   color: #305F72;
   text-align: center;
 }
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .home-content {
+    width: 90%;
+    margin-left: 5%;
+    padding: 15px;
+  }
+
+  .icon-ring-home {
+    top: 40px;
+    right: 30px;
+    width: 120px;
+    height: 150px;
+  }
+
+  .icon-wrapper-home svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .bar-chart {
+    height: 250px;
+    margin-bottom: 60px;
+  }
+
+  .bar-container {
+    width: 70%;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-content {
+    width: 100%;
+    margin-left: 0;
+    padding: 10px;
+  }
+
+  .home-container {
+    padding: 0.5rem;
+  }
+
+  .icon-ring-home {
+    top: 30px;
+    right: 20px;
+    width: 100px;
+    height: 120px;
+  }
+
+  .icon-wrapper-home svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .bar-chart {
+    height: 200px;
+    margin-bottom: 40px;
+  }
+
+  .bar-container {
+    width: 90%;
+  }
+}

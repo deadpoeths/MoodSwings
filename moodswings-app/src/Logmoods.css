@@ -206,3 +206,79 @@
 .weather-windy {
     color: #87CEEB;
 }
+
+/* Tablet screens (768px and below) */
+@media (max-width: 768px) {
+    .app {
+        flex-direction: column;
+    }
+
+    .content {
+        width: 100%;
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    .card {
+        max-width: 90%;
+        padding: 15px;
+    }
+
+    .emoji {
+        width: 40px;
+        height: 40px;
+    }
+
+    .textarea {
+        width: 100%;
+    }
+
+    .emoji-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .weather-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Mobile screens (480px and below) */
+@media (max-width: 480px) {
+    .content {
+        padding: 10px;
+    }
+
+    .card {
+        padding: 10px;
+        max-width: 100%;
+    }
+
+    .emoji {
+        width: 30px;
+        height: 30px;
+    }
+
+    .emoji-label,
+    .weather-label {
+        font-size: 12px;
+    }
+
+    .button {
+        width: 100%;
+        padding: 8px;
+    }
+
+    .textarea {
+        width: 100%;
+        font-size: 0.8rem;
+    }
+
+    .emoji-container,
+    .weather-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .popup {
+        width: 80%;
+    }
+}
