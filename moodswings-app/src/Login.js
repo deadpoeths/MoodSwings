@@ -30,6 +30,8 @@ function Login() {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
 
+  const apiUrl = process.env.REACT_APP_API_URL; // Define apiUrl here
+
   const handleLogin = async (event) => {
     event.preventDefault();
     setMessage('');
@@ -37,7 +39,7 @@ function Login() {
     const loginData = { username, password };
 
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/login`, {
+      const response = await fetch(`${apiUrl}/api/auth/login`, { // Use apiUrl here
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -117,7 +119,6 @@ function Login() {
           <p>Don't have an account? <Link to="/signup">Sign Up</Link></p>
         </div>
       </div>
-
     </div>
   );
 }
