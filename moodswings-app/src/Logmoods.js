@@ -26,20 +26,22 @@ const LogMoods = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [errors, setErrors] = useState({ entry: "", emojis: "", weather: "" });
 
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
       console.error("No token found.");
       return;
     }
-    fetch("/api/moods", {
+    fetch(`${apiUrl}/api/moods`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
       .then((response) => response.json())
       .catch((error) => console.error("Error fetching entries:", error));
-  }, []);
+  }, [apiUrl]);
 
   const validateForm = () => {
     let hasError = false;
@@ -73,19 +75,18 @@ const LogMoods = () => {
 
     const timestamp = new Date();
 
-    fetch(`${process.env.REACT_APP_API_URL}api/moods`, {
+    fetch(`${apiUrl}/api/moods`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${token}`,
       },
-      body: JSON.stringify({ 
-        entry, 
+      body: JSON.stringify({
+        entry,
         moods: selectedEmojis, // Array of emoji IDs
-        weather: selectedWeather, // Single weather ID 
-        timestamp 
+        weather: selectedWeather, // Single weather ID
+        timestamp,
       }),
-      
     })
       .then((response) => {
         if (!response.ok) {
