@@ -74,7 +74,7 @@ const Home = () => {
     const token = localStorage.getItem('token'); // Retrieve the token from localStorage
 
     // Fetch mood data for the home page
-    fetch('https://moodswings-backend.vercel.app/api/moods', {
+    fetch(`${process.env.REACT_APP_API_URL}api/moods`, {
       headers: {
         'Authorization': `Bearer ${token}`,
       },

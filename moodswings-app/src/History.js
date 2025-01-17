@@ -42,7 +42,7 @@ function History() {
   useEffect(() => {
     const token = localStorage.getItem('token');  // Retrieve the token from localStorage
   
-    fetch('https://moodswings-backend.vercel.app/api/moods', {
+    fetch(`${process.env.REACT_APP_API_URL}/api/moods`, {
       headers: {
         'Authorization': `Bearer ${token}`  // Add the token to the Authorization header
       }
