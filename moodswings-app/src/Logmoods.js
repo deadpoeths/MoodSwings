@@ -26,7 +26,7 @@ const LogMoods = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [errors, setErrors] = useState({ entry: "", emojis: "", weather: "" });
 
-  const apiUrl = process.env.REACT_APP_API_URL;
+  const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000'; // fallback to local server if not set in the environment
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -75,7 +75,7 @@ const LogMoods = () => {
 
     const timestamp = new Date();
 
-    fetch(`${apiUrl}/api/moods`, {
+    fetch(`${apiUrl}/api/moods`, { // Ensure the URL is correct
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -180,22 +180,22 @@ const LogMoods = () => {
             <div className="weather-container">
               {weatherOptions.map(({ id, Icon, label }) => (
                 <div 
-                key={id} 
-                className={`weather-wrapper ${selectedWeather === id ? "selected" : ""}`} 
-                onClick={() => handleWeatherClick(id)}
-              >
-                <Icon
-                  className={`weather-icon ${
-                    label.toLowerCase().includes("sunny") ? "weather-sunny" :
-                    label.toLowerCase().includes("cloudy") ? "weather-cloudy" :
-                    label.toLowerCase().includes("rainy") ? "weather-rainy" :
-                    label.toLowerCase().includes("snowy") ? "weather-snowy" :
-                    label.toLowerCase().includes("foggy") ? "weather-foggy" :
-                    "weather-windy"
-                  } ${selectedWeather === id ? "selected" : ""}`}
-                />
-                <p className="weather-label">{label}</p>
-              </div>              
+                  key={id} 
+                  className={`weather-wrapper ${selectedWeather === id ? "selected" : ""}`} 
+                  onClick={() => handleWeatherClick(id)}
+                >
+                  <Icon
+                    className={`weather-icon ${
+                      label.toLowerCase().includes("sunny") ? "weather-sunny" :
+                      label.toLowerCase().includes("cloudy") ? "weather-cloudy" :
+                      label.toLowerCase().includes("rainy") ? "weather-rainy" :
+                      label.toLowerCase().includes("snowy") ? "weather-snowy" :
+                      label.toLowerCase().includes("foggy") ? "weather-foggy" :
+                      "weather-windy"
+                    } ${selectedWeather === id ? "selected" : ""}`}
+                  />
+                  <p className="weather-label">{label}</p>
+                </div>              
               ))}
             </div>
             {errors.weather && <p className="error-message">{errors.weather}</p>}
