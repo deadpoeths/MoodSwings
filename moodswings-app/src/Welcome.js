@@ -59,7 +59,6 @@ function Welcome() {
         ))}
         <div className="icon-text">
           <h2>Welcome to MoodSwings</h2>
-          <p>Track your mood, reflect, and discover insights to better understand your emotions.</p>
           <button onClick={handleLogin}>Login</button>
           <button onClick={handleSignup}>Sign Up</button>
         </div>
